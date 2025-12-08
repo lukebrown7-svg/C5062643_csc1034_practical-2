@@ -9,18 +9,23 @@ class Job:
         pass
 
     def get_name(self):
+        return self._name
         pass
 
     def get_category(self):
+        return self._category
         pass
 
     def get_rate(self):
+        return self._rate
         pass
 
     def get_date(self):
+        return self._date
         pass
 
     def get_hours(self):
+        return self._hours
         pass
 
     def __eq__(self, other):
