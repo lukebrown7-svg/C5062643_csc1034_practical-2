@@ -30,10 +30,20 @@ class JobManager:
         return None
 
     def remove_job(self, job):
-        pass
+        if job not in self._jobs:
+            print("Job does not exist")
+            return False
+        self._jobs.remove(job)
+        return None
 
     def edit_job(self, old_job, new_job):
-        pass
+        if old_job not in self._jobs:
+            print("Job does not exist")
+            return False
+        else:
+            self._jobs.remove(old_job)
+            self._jobs.append(new_job)
+            return None
 
     def search_by_category(self, category):
         pass
