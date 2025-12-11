@@ -46,13 +46,22 @@ class JobManager:
             return None
 
     def search_by_category(self, category):
-        pass
+        for job in self._jobs:
+            if job.get_category() == category:
+                return job
+        return None
 
     def search_by_rate(self, rate):
-        pass
+        for job in self._jobs:
+            if job.get_rate() == rate:
+                return job
+        return None
 
     def search_by_name_and_date(self, name, date):
-        pass
+        for job in self._jobs:
+            if job.get_name() == name and job.get_date() == date:
+                return job
+        return None
 
     def get_total_cost_per_name(self, names):
         pass
