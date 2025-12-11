@@ -1,7 +1,10 @@
 class JobManager:
 
     def __init__(self, jobs=None):
-        pass
+        if jobs is None:
+            self._jobs = []
+        else:
+            self._jobs = jobs
 
     def get_jobs(self):
         pass
