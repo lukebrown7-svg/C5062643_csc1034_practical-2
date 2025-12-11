@@ -16,7 +16,18 @@ class JobManager:
         return self.__str__()
 
     def add_job(self, job):
-        pass
+        if job.get_rate() <= 0:
+            print("Only positive values for rate allowed")
+            return False
+        if job.get_hours() <= 0:
+            print("Only positive values for hours allowed")
+            return False
+        if job.get_hours() > 6:
+            print("Cannot allocate more than 6 hours per job")
+            return False
+
+        self._jobs.append(job)
+        return None
 
     def remove_job(self, job):
         pass
