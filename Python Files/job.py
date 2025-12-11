@@ -37,4 +37,4 @@ class Job:
         return f'Job("{self._name}", "{self._category}", {self._rate}, "{self._date}", {self._hours})'
 
     def __repr__(self):
-        pass
+        return self.__str__()
