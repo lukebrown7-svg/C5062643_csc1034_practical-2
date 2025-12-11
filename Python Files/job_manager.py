@@ -50,10 +50,33 @@ class JobManager:
         if old_job not in self._jobs:
             print("Job does not exist")
             return False
-        else:
-            self._jobs.remove(old_job)
-            self._jobs.append(new_job)
-            return None
+
+        if new_job.get_rate() <= 0:
+            print("Only positive values for rate allowed")
+            return False
+        if new_job.get_hours() <= 0:
+            print("Only positive values for hours allowed")
+            return False
+        if new_job.get_hours() > 6:
+            print("Cannot allocate more than 6 hours per job")
+            return False
+
+        total_hours_today = 0
+        for existing_job in self._jobs:
+            if existing_job == old_job:
+                continue
+
+            if (existing_job.get_name() == new_job.get_name() and
+                existing_job.get_date() == new_job.get_date()):
+                total_hours_today += existing_job.get_hours()
+
+        if total_hours_today + new_job.get_hours() > 8:
+            print("Cannot allocate more than 8 hours per worker per day")
+            return False
+
+        self._jobs.remove(old_job)
+        self._jobs.append(new_job)
+        return None
 
     def search_by_category(self, category):
         matches = []
