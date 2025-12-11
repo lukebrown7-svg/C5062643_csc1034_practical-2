@@ -9,26 +9,28 @@ class Job:
 
     def get_name(self):
         return self._name
-        pass
 
     def get_category(self):
         return self._category
-        pass
 
     def get_rate(self):
         return self._rate
-        pass
 
     def get_date(self):
         return self._date
-        pass
 
     def get_hours(self):
         return self._hours
-        pass
 
     def __eq__(self, other):
-        pass
+        if (self._name == other.get_name() and
+            self._category == other.get_category() and
+            self._rate == other.get_rate() and
+            self._date == other.get_date() and
+            self._hours == other.get_hours()):
+            return True
+        else:
+            return False
 
     def __hash__(self):
         pass
