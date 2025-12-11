@@ -7,13 +7,13 @@ class JobManager:
             self._jobs = jobs
 
     def get_jobs(self):
-        pass
+        return self._jobs
 
     def __str__(self):
-        pass
+        return f"JobManager({self._jobs})"
 
     def __repr__(self):
-        pass
+        return self.__str__()
 
     def add_job(self, job):
         pass
