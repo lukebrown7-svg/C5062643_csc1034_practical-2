@@ -33,7 +33,8 @@ class Job:
             return False
 
     def __hash__(self):
-        pass
+        attributes = (self._name, self._category, self._rate, self._date, self._hours)
+        return hash(attributes)
 
     def __str__(self):
         return f'Job("{self._name}", "{self._category}", {self._rate}, "{self._date}", {self._hours})'
