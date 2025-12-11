@@ -70,15 +70,28 @@ class JobManager:
         result = {}
 
         for job in self._jobs:
-            if job.get_name() in names:
-                result[job.get_name()] = job.get_cost()
+            name = job.get_name()
+            if name in names:
+                cost = job.get_rate() * job.get_hours()
+                result[name] += cost
+            return result
+        return None
 
     def get_category_count_per_name(self):
         result = {}
 
         for job in self._jobs:
-            if job.get_name() in result:
-                result[job.get_name()] = result[job.get_name()] + job.get_cost()
+            name = job.get_name()
+            category = job.get_category()
+            result[name][category] += 1
+
+            if name not in result:
+                result[name] = {}
+            if category not in result[name]:
+                result[name][category] = 0
+
+            return result
+        return None
 
     def load_from_file(self, file_name):
         pass
