@@ -46,28 +46,39 @@ class JobManager:
             return None
 
     def search_by_category(self, category):
+        matches = []
         for job in self._jobs:
             if job.get_category() == category:
-                return job
-        return None
+                matches.append(job)
+        return matches
 
     def search_by_rate(self, rate):
+        matches = []
         for job in self._jobs:
             if job.get_rate() == rate:
-                return job
-        return None
+                matches.append(job)
+        return matches
 
     def search_by_name_and_date(self, name, date):
+        matches = []
         for job in self._jobs:
             if job.get_name() == name and job.get_date() == date:
-                return job
-        return None
+                matches.append(job)
+        return matches
 
     def get_total_cost_per_name(self, names):
-        pass
+        result = {}
+
+        for job in self._jobs:
+            if job.get_name() in names:
+                result[job.get_name()] = job.get_cost()
 
     def get_category_count_per_name(self):
-        pass
+        result = {}
+
+        for job in self._jobs:
+            if job.get_name() in result:
+                result[job.get_name()] = result[job.get_name()] + job.get_cost()
 
     def load_from_file(self, file_name):
         pass
