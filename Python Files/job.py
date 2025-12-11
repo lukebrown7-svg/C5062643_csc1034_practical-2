@@ -6,7 +6,6 @@ class Job:
         self._rate = rate
         self._date = date
         self._hours = hours
-        pass
 
     def get_name(self):
         return self._name
@@ -35,7 +34,7 @@ class Job:
         pass
 
     def __str__(self):
-        pass
+        return f'Job("{self._name}", "{self._category}", {self._rate}, "{self._date}", {self._hours})'
 
     def __repr__(self):
         pass
