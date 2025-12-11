@@ -26,6 +26,16 @@ class JobManager:
             print("Cannot allocate more than 6 hours per job")
             return False
 
+        total_hours_today = 0
+        for existing_job in self._jobs:
+            if (existing_job.get_name() == job.get_name() and
+                existing_job.get_date() == job.get_date()):
+                total_hours_today += existing_job.get_hours()
+
+        if total_hours_today + job.get_hours() > 8:
+            print("Cannot allocate more than 8 hours per worker per day")
+            return False
+
         self._jobs.append(job)
         return None
 
