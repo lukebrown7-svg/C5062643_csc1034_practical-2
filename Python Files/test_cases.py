@@ -25,6 +25,10 @@ jm.add_job(job5)
 job6 = Job("Alice", "Teacher", 10.0, "10/10/2025", 3)
 print(jm.add_job(job6))
 
+print("Remove Job Test")
+print(jm.remove_job(job1))
+print(jm.get_jobs())
+
 
 
 
