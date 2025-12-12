@@ -107,8 +107,7 @@ class JobManager:
             if name in names:
                 cost = job.get_rate() * job.get_hours()
                 result[name] += cost
-            return result
-        return None
+        return result
 
     def get_category_count_per_name(self):
         result = {}
