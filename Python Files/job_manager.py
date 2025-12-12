@@ -127,7 +127,26 @@ class JobManager:
         return None
 
     def load_from_file(self, file_name):
-        pass
+        import csv
+        from job import Job
+
+        with open(file_name, "r", newline="") as file:
+            reader = csv.reader(file)
+
+            for name, category, rate, date, hours in reader:
+                job = Job(name, category, float(rate), date, int(hours))
+                self.add_job(job)
 
     def save_to_file(self, file_name):
-        pass
+        import csv
+
+        with open(file_name, "w", newline="") as file:
+            writer = csv.writer(file)
+            for job in self._jobs:
+                writer.writerow([
+                    job.get_name(),
+                    job.get_category(),
+                    job.get_rate(),
+                    job.get_date(),
+                    job.get_hours()
+                ])
