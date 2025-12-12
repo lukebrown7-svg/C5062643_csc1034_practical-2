@@ -29,6 +29,9 @@ print("Remove Job Test")
 print(jm.remove_job(job1))
 print(jm.get_jobs())
 
+print("Remove Missing Job Test")
+print(jm.remove_job(job1))
+
 
 
 
