@@ -32,6 +32,12 @@ print(jm.get_jobs())
 print("Remove Missing Job Test")
 print(jm.remove_job(job1))
 
+print("eq and hash test")
+job7 = Job("Tom","Assistant",7.0,"12/12/2025",4)
+job8 = Job("Tom","Assistant",7.0,"12/12/2025",4)
+print(job7 == job8)
+print({job7,job8})
+
 
 
 
