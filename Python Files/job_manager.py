@@ -101,29 +101,27 @@ class JobManager:
 
     def get_total_cost_per_name(self, names):
         result = {}
-
         for job in self._jobs:
             name = job.get_name()
             if name in names:
                 cost = job.get_rate() * job.get_hours()
-                result[name] += cost
+                result[name] = result.get(name, 0) + cost
         return result
 
     def get_category_count_per_name(self):
         result = {}
-
         for job in self._jobs:
             name = job.get_name()
             category = job.get_category()
-            result[name][category] += 1
 
             if name not in result:
                 result[name] = {}
+
             if category not in result[name]:
                 result[name][category] = 0
 
-            return result
-        return None
+            result[name][category] += 1
+        return result
 
     def load_from_file(self, file_name):
         import csv
@@ -131,7 +129,6 @@ class JobManager:
 
         with open(file_name, "r", newline="") as file:
             reader = csv.reader(file)
-
             for name, category, rate, date, hours in reader:
                 job = Job(name, category, float(rate), date, int(hours))
                 self.add_job(job)
